@@ -2,21 +2,27 @@
 # setup repo
 - hosts: all
   gather_facts: true
-  become: true
+  become: yes
   roles:
   - common
 
 # setup LB
 - hosts: frontends
   gather_facts: true
-  become: true
+  become: yes
   roles:
   - lb-tier
 
 # setup LB
 - hosts: apps
   gather_facts: true
-  become: true
+  become: yes
   roles:
   - web-tier
 
+# setup DB
+- hosts: appdbs
+  gather_facts: true
+  become: yes
+  roles:
+  - geerlingguy.postgresql
