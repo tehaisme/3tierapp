@@ -12,4 +12,11 @@
   become: true
   roles:
   - lb-tier
- 
+
+# setup LB
+- hosts: apps
+  gather_facts: true
+  become: true
+  roles:
+  - web-tier
+

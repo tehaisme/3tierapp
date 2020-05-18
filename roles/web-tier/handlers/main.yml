@@ -1,0 +1,7 @@
+---
+# handlers file for roles/web-tier
+
+- name: restart_tom
+  service:
+    name: tomcat
+    state: restarted

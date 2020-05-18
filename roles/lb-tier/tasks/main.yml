@@ -18,9 +18,8 @@
     enabled: yes
 
 - name: "Configure {{ proxy_pkg }}"
-  notify: 
-    - restart_LB
   template: 
-    dest: /etc/haproxy/haproxy.cfg
     src: haproxy.cfg.j2
-
+    dest: /etc/haproxy/haproxy.cfg
+  notify:
+    - restart_LB 
