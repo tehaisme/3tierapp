@@ -3,7 +3,7 @@
   hosts: workstation
   tasks:
     - name: Fetch Instance Info
-      os_server_info:
+      os_server_facts:
         cloud: openstack
       register: result
 
@@ -11,10 +11,10 @@
       add_host:
         name: "{{ item.public_v4 }}"
         group: "{{ item.metadata.group }}"
-      with_items: "{{result.openstack_servers}}"
+      with_items: "{{result.ansible_facts.openstack_servers}}"
 
     - name: Add host
       add_host:
         name: "{{ item.public_v4 }}"
         group: "{{ item.metadata.deployment_name }}"
-      with_items: "{{result.openstack_servers}}"
+      with_items: "{{result.ansible_facts.openstack_servers}}"
