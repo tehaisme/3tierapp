@@ -1,4 +1,8 @@
 ---
+
+- name: Import In-memory inventory play
+  import_playbook: in-memory-inventory.yml
+
 # setup repo
 - hosts: all
   gather_facts: true
